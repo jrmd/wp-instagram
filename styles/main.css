@@ -1,0 +1,32 @@
+.igf-btn {
+	display: inline-block;
+	margin: 20px 0;
+	padding: 0 21px 0 21px;
+	height: 47px;
+	line-height: 47px;
+	background: #fff;
+	background-size: 27px;
+	color: #000;
+	text-decoration: none;
+	border-radius: 5px;
+	border: 1px solid rgba(0, 0, 0, .1);
+	transition: all .5s ease-in-out;
+}
+
+.igf-btn:hover {
+	color: #000;
+	background-color: #fefefe;
+	transition: all .1s ease-in-out;
+}
+
+.igf-btn.authorize {
+	padding: 0 21px 0 60px;
+	background: #fff url("../img/logo.png") no-repeat 16px 11px;
+	background-size: 27px;
+}
+
+.igf-btn.revoke {
+	padding: 0 21px 0 60px;
+	background: #fff url("../img/cancel.png") no-repeat 16px 11px;
+	background-size: 27px;
+}
