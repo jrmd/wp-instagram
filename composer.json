@@ -1,0 +1,25 @@
+{
+  "name": "jrmd/wp-instagram",
+  "description": "Instagram plugin wordpress",
+  "license": "MIT",
+  "keywords": [
+    "Instagram",
+    "PHP"
+  ],
+  "authors": [
+    {
+      "name": "jrmd",
+      "email": "jerome@bigbitecreative.com"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "require": {
+    "php": ">=7.0.0",
+    "ext-curl": "*",
+    "ext-gd": "*"
+  }
+}
