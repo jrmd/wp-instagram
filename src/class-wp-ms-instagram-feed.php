@@ -32,8 +32,8 @@ class MS_Instagram_Feed {
     public function displayMenuPage() {
     	$authed = $this->isAuthorized() ?? false;
 
-    	if ( ! $authed && isset( $_GET['code'] ) ) {
-    		$authed = $this::$api->authorize( $_GET['code'] );
+    	if ( ! $authed && isset( $_GET['token'] ) ) {
+    		$authed = $_GET['token'];
 
     		if ( $authed ) {
 				$this->setOrUpdateOption( 'access_token', $authed );
