@@ -17,7 +17,7 @@ new MS_Instagram_Feed();
 
 function ig_feed_media( $count = 18, $size = 'thumbnail' ) {
 
-	$images = false; // get_transient( 'insta_feed_media_' . $size . '_' . $count );
+	$images = get_transient( 'insta_feed_media_' . $size . '_' . $count );
 
 	if ( $images ) {
 		return $images;
@@ -26,9 +26,6 @@ function ig_feed_media( $count = 18, $size = 'thumbnail' ) {
 	// set_transient
 	$ig = new MS_Instagram_Feed();
 	$data = $ig->getMedia( $count );
-
-
-    var_dump($data);
 
 	if ( ! $data ) {
 		$backupMedia = get_transient( 'insta_feed_backup_media_' . $size . '_' . $count ) ?? false;
