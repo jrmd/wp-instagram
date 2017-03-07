@@ -93,6 +93,7 @@ class InstagramAPI {
 			return $error;
 		}
 
+
 		$url = 'https://api.instagram.com/v1/users/self/?access_token=';
 		$url .= $this->getToken();
 
@@ -109,10 +110,10 @@ class InstagramAPI {
 	}
 
 	public function hasError () {
-		return get_transient( 'move_insta_feed_failed' ) ?? false;
+		return get_transient( 'insta_feed_failed' ) ?? false;
 	}
 
 	public function setError ( $response ) {
-		set_transient( 'move_insta_feed_failed', $response, DAY_IN_SECONDS );
+		set_transient( 'insta_feed_failed', $response, DAY_IN_SECONDS );
 	}
 }

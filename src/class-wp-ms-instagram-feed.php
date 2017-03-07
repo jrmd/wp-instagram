@@ -2,8 +2,8 @@
 
 class MS_Instagram_Feed {
     public static $key = '_wp_ig_feed_';
-    private static $clientID = 'aa9e340eb7bb4937898051ff69740bf2';
-    private static $clientSecret = '30b28eec009d40bdb2a56fe7a8f8261b';
+    private static $clientID = 'f6bbdbc833394244979e3bb2cfbe5c1d';
+    private static $clientSecret = '66480a0f49294ac5bad0fbf320b051cb';
     public static $api = '';
 
     public function __construct() {
@@ -26,7 +26,7 @@ class MS_Instagram_Feed {
     }
 
     public function createMenuPages() {
-    	add_menu_page( 'Instagram', 'Instagram', 'none', 'ig-feed', [ $this, 'displayMenuPage' ], 'dashicons-format-image' );
+    	add_menu_page( 'Instagram', 'Instagram', 'edit_posts', 'ig-feed', [ $this, 'displayMenuPage' ], 'dashicons-format-image' );
     }
 
     public function displayMenuPage() {
@@ -111,11 +111,19 @@ class MS_Instagram_Feed {
     }
 
     public function getMedia( $count = 12 ) {
+        if ( ! $this->isAuthorized() ) {
+            return false;
+        }
+
     	$this::$api->setToken( $this->getOption( 'access_token' ) );
     	return $this::$api->getMedia( $count );
     }
 
     public function getUser() {
+        if ( ! $this->isAuthorized() ) {
+            return false;
+        }
+
     	$this::$api->setToken( $this->getOption( 'access_token' ) );
     	return $this::$api->getUser();
     }

@@ -1,10 +1,10 @@
 <?php
 /**
  * @wordpress-plugin
- * Plugin Name:       WP Instagram Multisite
+ * Plugin Name:       WP InstaFeed (Multisite)
  * Plugin URI:        http://bigbitecreative.com/
  * Description:       Add instagram
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Jerome Duncan
  * Author URI:        http://bigbitecreative.com/
  * License:           MIT
@@ -15,9 +15,9 @@ require_once __DIR__ . '/src/class-wp-ms-instagram-feed.php';
 
 new MS_Instagram_Feed();
 
-function ig_feed_media( $count = 12, $size = 'thumbnail' ) {
+function ig_feed_media( $count = 18, $size = 'thumbnail' ) {
 
-	$images = get_transient( 'insta_feed_media_' . $size . '_' . $count );
+	$images = false; // get_transient( 'insta_feed_media_' . $size . '_' . $count );
 
 	if ( $images ) {
 		return $images;
@@ -26,6 +26,9 @@ function ig_feed_media( $count = 12, $size = 'thumbnail' ) {
 	// set_transient
 	$ig = new MS_Instagram_Feed();
 	$data = $ig->getMedia( $count );
+
+
+    var_dump($data);
 
 	if ( ! $data ) {
 		$backupMedia = get_transient( 'insta_feed_backup_media_' . $size . '_' . $count ) ?? false;
