@@ -1,12 +1,12 @@
 <?php
 /**
  * @wordpress-plugin
- * Plugin Name:       WP InstaFeed (Multisite)
- * Plugin URI:        http://bigbitecreative.com/
- * Description:       Add instagram
- * Version:           1.0.1
+ * Plugin Name:       WP Instagram Feed (Multisite)
+ * Plugin URI:        http://github.com/jrmd/wp-instagram
+ * Description:       Add instagram support to wordpress for developers
+ * Version:           1.0.2
  * Author:            Jerome Duncan
- * Author URI:        http://bigbitecreative.com/
+ * Author URI:        http://itsjero.me
  * License:           MIT
  */
 

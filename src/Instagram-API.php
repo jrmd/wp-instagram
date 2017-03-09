@@ -2,54 +2,6 @@
 
 class InstagramAPI {
 	protected $token = '';
-	protected $clientID = '';
-	protected $clientSecret = '';
-
-	public function __construct( $clientID, $clientSecret) {
-		$this->clientID = $clientID;
-		$this->clientSecret = $clientSecret;
-	}
-
-	public function authorize( $code ) {
-		$url = 'https://api.instagram.com/oauth/access_token';
-
-		$fields = [
-    		'client_id' => $this->clientID,
-			'client_secret' => $this->clientSecret,
-			'grant_type' => 'authorization_code',
-			'redirect_uri' =>  urlEncode( admin_url( 'admin.php?page=ig-feed' ) ),
-			'code' => $code,
-		];
-
-		$fieldsString = '';
-
-		foreach ( $fields as $key => $value ) {
-			$fieldsString .= $key . '=' . $value . '&';
-		}
-
-		$fieldsString = rtrim( $fieldsString, '&' );
-
-		$ch = curl_init();
-
-		curl_setopt( $ch, CURLOPT_URL, $url );
-		curl_setopt( $ch, CURLOPT_POST, count( $fields ) );
-		curl_setopt( $ch, CURLOPT_POSTFIELDS, $fieldsString );
-		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-
-		$result = curl_exec( $ch );
-		//close connection
-		curl_close( $ch );
-
-		$data = json_decode($result);
-
-		if ( isset( $data->access_token ) ) {
-			$this->setToken( $data->access_token );
-
-			return $data->access_token;
-		}
-
-		return false;
-	}
 
 	public function setToken( $token ) {
 		$this->token = $token;
@@ -61,7 +13,7 @@ class InstagramAPI {
 
 	public function getMedia( $count = 12 ) {
 
-		if ( $this->hasError() ) {
+		if ( $this->hasError() || ! $this->getToken() ) {
 			return false;
 		}
 

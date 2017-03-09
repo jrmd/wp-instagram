@@ -2,12 +2,10 @@
 
 class MS_Instagram_Feed {
     public static $key = '_wp_ig_feed_';
-    private static $clientID = 'f6bbdbc833394244979e3bb2cfbe5c1d';
-    private static $clientSecret = '66480a0f49294ac5bad0fbf320b051cb';
     public static $api = '';
 
     public function __construct() {
-    	$this::$api = new InstagramAPI( $this::$clientID, $this::$clientSecret );
+    	$this::$api = new InstagramAPI();
         $this->is_multisite();
     	add_action( 'admin_menu', [ $this, 'createMenuPages' ] );
     	add_action( 'admin_enqueue_scripts', [ $this, 'adminStyles' ] );
