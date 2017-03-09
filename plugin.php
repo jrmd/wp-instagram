@@ -4,7 +4,7 @@
  * Plugin Name:       WP Instagram Feed (Multisite)
  * Plugin URI:        http://github.com/jrmd/wp-instagram
  * Description:       Add instagram support to wordpress for developers
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            Jerome Duncan
  * Author URI:        http://itsjero.me
  * License:           MIT

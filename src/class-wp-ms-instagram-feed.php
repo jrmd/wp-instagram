@@ -47,7 +47,7 @@ class MS_Instagram_Feed {
     	}
 
     	if ( isset( $_GET['action'] ) && 'revoke' === $_GET['action'] ) {
-    		$this->removeOption( 'access_token' );
+    		$this->revokeAccount();
     		$this->successMessage('You have revoked access to your account');
 
 	   		require_once __DIR__ . '/../templates/unauthorized.php';
@@ -140,5 +140,16 @@ class MS_Instagram_Feed {
         <p><?php _e( 'Success! ' . $message, 'sample-text-domain' ); ?></p>
     </div>
     	<?php
+    }
+
+    protected function revokeAccount () {
+
+        // delete transients for current account
+        global $wpdb;
+        $sql = "DELETE FROM {$wpdb->options} WHERE option_name LIKE '%_insta_feed_%'";
+        $wpdb->get_results( $sql );
+
+        // remove access token
+        $this->removeOption( 'access_token' );        
     }
 }
