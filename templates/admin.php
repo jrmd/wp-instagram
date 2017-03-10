@@ -1,5 +1,5 @@
 <?php $response = ig_feed_user();
-$currentUser = ($response->meta->code ?? false) && $response->meta->code !== 200 ? false : $response->data;
+$currentUser = isset($response->meta->code) && $response->meta->code !== 200 ? false : $response->data;
 ?>
 
 <div class="wrap">
