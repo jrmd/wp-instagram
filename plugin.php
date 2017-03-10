@@ -28,7 +28,9 @@ function ig_feed_media( $count = 18, $size = 'thumbnail' ) {
 	$data = $ig->getMedia( $count );
 
 	if ( ! $data ) {
-		$backupMedia = get_transient( 'insta_feed_backup_media_' . $size . '_' . $count ) ?? false;
+		$backupMedia = get_transient( 'insta_feed_backup_media_' . $size . '_' . $count );
+		$backupMedia = $backupMedia ?: false;
+
 		return $backupMedia;
 	}
 
