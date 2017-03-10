@@ -36,9 +36,9 @@ function ig_feed_media( $count = 18, $size = 'thumbnail' ) {
 
 	foreach ( $data as $key => $img ) {
 		$images[] = [
-			'src'  => $img->images->{$size}->url ?? false,
-			'link' => $img->link ?? false,
-			'alt'  => $img->caption->text ?? false,
+			'src'  => isset($img->images->{$size}->url) ? $img->images->{$size}->url : false,
+			'link' => isset($img->link) ? $img->link : false,
+			'alt'  => isset($img->caption->text) ? $img->caption->text : false,
 		];
 	}
 
