@@ -62,7 +62,7 @@ class InstagramAPI {
 	}
 
 	public function hasError () {
-		return get_transient( 'insta_feed_failed' ) ?? false;
+		return get_transient( 'insta_feed_failed' ) ?: false;
 	}
 
 	public function setError ( $response ) {
