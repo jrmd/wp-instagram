@@ -28,7 +28,7 @@ class MS_Instagram_Feed {
     }
 
     public function displayMenuPage() {
-    	$authed = $this->isAuthorized() ?? false;
+    	$authed = $this->isAuthorized() ?: false;
 
     	if ( ! $authed && isset( $_GET['token'] ) ) {
     		$authed = $_GET['token'];
